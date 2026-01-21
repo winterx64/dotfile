@@ -287,3 +287,70 @@ python_binary = ["./venv/bin/python", "python", "python3", "python2"]
 detect_extensions = ["py"]
 version_format = "v${raw}"
 ```
+
+## current version
+```toml
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$fill\
+$all\
+$docker_context\
+$package\
+$python\
+$line_break\
+$character"""
+
+
+[fill]
+symbol = ' '
+
+[package]
+format = '[ $version  ](008 bold)'
+
+[directory]
+truncation_length = 1
+truncation_symbol = " "
+home_symbol = ' home'
+read_only_style = '197'
+read_only = '  '
+format = '[$path]($style)[$read_only]($read_only_style) '
+
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+[git_branch]
+format = 'git:[$branch]($style)'
+style = "bright-black"
+
+[git_status]
+format = ' ([\[$all_status$ahead_behind\]]($style)) '
+style = "blue"
+
+[git_state]
+format = '([$all_status$ahead_behind]($style)) '
+style = "bright-black"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[python]
+format = '( ${version})[(: $virtualenv )]($style)'
+style = "bright-black"
+
+[nodejs]
+format = '[ $version  ](bright-white)'
+
+
+[docker_context]
+format = 'via [🐋 $context](blue bold)'
+detect_files = ['docker-compose.yml', 'docker-compose.yaml', 'Dockerfile']
+```
